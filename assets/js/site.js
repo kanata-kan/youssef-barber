@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSite();
   setupHeaderState();
   setupMobileMenu();
+  setupScrollTopButton();
   setupRevealAnimations();
   setupSkillAnimations();
   setupCounters();
@@ -33,11 +34,29 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function syncMeta() {
-  document.title = siteContent.meta.title;
-  const description = document.querySelector('meta[name="description"]');
+  const { meta } = siteContent;
+  const previewImage = getAbsoluteUrl(meta.previewImage, meta.siteUrl);
 
-  if (description) {
-    description.setAttribute("content", siteContent.meta.description);
+  document.title = meta.title;
+  updateMetaTag('meta[name="description"]', meta.description);
+  updateMetaTag('meta[name="theme-color"]', meta.themeColor);
+  updateMetaTag('meta[property="og:title"]', meta.title);
+  updateMetaTag('meta[property="og:description"]', meta.description);
+  updateMetaTag('meta[property="og:url"]', meta.siteUrl);
+  updateMetaTag('meta[property="og:image"]', previewImage);
+  updateMetaTag('meta[property="og:image:url"]', previewImage);
+  updateMetaTag('meta[property="og:image:secure_url"]', previewImage);
+  updateMetaTag('meta[property="og:image:alt"]', meta.previewImageAlt);
+  updateMetaTag('meta[name="twitter:title"]', meta.title);
+  updateMetaTag('meta[name="twitter:description"]', meta.description);
+  updateMetaTag('meta[name="twitter:url"]', meta.siteUrl);
+  updateMetaTag('meta[name="twitter:image"]', previewImage);
+  updateMetaTag('meta[name="twitter:image:alt"]', meta.previewImageAlt);
+
+  const canonical = document.querySelector('link[rel="canonical"]');
+
+  if (canonical) {
+    canonical.setAttribute("href", meta.siteUrl);
   }
 }
 
@@ -476,6 +495,12 @@ function renderSocialDock() {
   const root = document.getElementById("social-dock");
 
   root.innerHTML = `
+    <button class="scroll-top" id="scroll-top" type="button" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 4.3 4.15 12.14l1.41 1.42 5.44-5.45V20h2V8.11l5.45 5.45 1.41-1.42z" />
+      </svg>
+      <span class="sr-only">Back to top</span>
+    </button>
     <div class="social-dock" aria-label="Social links">
       ${siteContent.social
         .map(
@@ -489,6 +514,30 @@ function renderSocialDock() {
         .join("")}
     </div>
   `;
+}
+
+function setupScrollTopButton() {
+  const button = document.getElementById("scroll-top");
+
+  if (!button) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const syncButtonState = () => {
+    button.classList.toggle("visible", window.scrollY > 320);
+  };
+
+  button.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion.matches ? "auto" : "smooth"
+    });
+  });
+
+  syncButtonState();
+  window.addEventListener("scroll", syncButtonState, { passive: true });
 }
 
 function renderNavLinks(links) {
@@ -505,6 +554,18 @@ function getSocialHref(item) {
   const currentUrl = window.location.href;
   const text = `${item.message} Link: ${currentUrl}`;
   return `https://wa.me/${item.phone}?text=${encodeURIComponent(text)}`;
+}
+
+function updateMetaTag(selector, value) {
+  const tag = document.querySelector(selector);
+
+  if (tag && value) {
+    tag.setAttribute("content", value);
+  }
+}
+
+function getAbsoluteUrl(pathOrUrl, baseUrl = window.location.origin) {
+  return new URL(pathOrUrl, baseUrl).href;
 }
 
 function renderSectionIntro(tag, title, lead = "") {

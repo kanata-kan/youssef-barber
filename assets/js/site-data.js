@@ -2,7 +2,11 @@ export const siteContent = {
   meta: {
     title: "Youssef El Moussaaif | Master Barber",
     description:
-      "Luxury barber portfolio for Youssef El Moussaaif, master barber and hairstylist in Marrakech."
+      "Luxury barber portfolio for Youssef El Moussaaif, master barber and hairstylist in Marrakech.",
+    siteUrl: "https://youssef-barber.vercel.app/",
+    previewImage: "/assets/images/social-preview.jpg?v=20260518",
+    previewImageAlt: "Youssef El Moussaaif master barber social preview",
+    themeColor: "#060e1a"
   },
   brand: {
     shortName: "Y. El Moussaaif",

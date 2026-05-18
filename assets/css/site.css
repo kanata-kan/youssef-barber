@@ -43,6 +43,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
   overflow-x: clip;
 }
 
@@ -77,6 +78,7 @@ button,
 input,
 textarea {
   font: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -153,6 +155,10 @@ blockquote {
 .site-header-wrap {
   position: relative;
   z-index: 60;
+}
+
+section[id] {
+  scroll-margin-top: 7rem;
 }
 
 .content-section,
@@ -325,6 +331,7 @@ blockquote {
   gap: 1rem;
   max-height: calc(100svh - 7.25rem);
   overflow-y: auto;
+  overscroll-behavior: contain;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-1rem);
@@ -559,6 +566,7 @@ body.menu-open .mobile-menu {
 
 .btn,
 .social-link,
+.scroll-top,
 .feature-card,
 .detail-card,
 .stat-card,
@@ -1327,6 +1335,49 @@ textarea {
   pointer-events: none;
 }
 
+.scroll-top {
+  position: fixed;
+  left: max(0.75rem, env(safe-area-inset-left));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 25;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  background: rgba(8, 17, 31, 0.78);
+  color: var(--gold-soft);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(0.8rem);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.scroll-top.visible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  border-color: rgba(234, 212, 162, 0.34);
+  color: var(--text);
+  background: rgba(8, 17, 31, 0.9);
+  box-shadow:
+    0 18px 34px rgba(0, 0, 0, 0.3),
+    0 8px 18px rgba(201, 169, 110, 0.08);
+}
+
+.scroll-top svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
 .social-link {
   pointer-events: auto;
   position: relative;
@@ -1420,6 +1471,7 @@ textarea {
 .nav-cta,
 .mobile-cta,
 .menu-toggle,
+.scroll-top,
 .hero-highlights li,
 .interest-chip,
 .feature-mark,
@@ -1518,6 +1570,14 @@ textarea,
 }
 
 @media (max-width: 900px) {
+  html {
+    scroll-padding-top: 6.4rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 6.4rem;
+  }
+
   .nav-desktop,
   .nav-cta {
     display: none;
@@ -1537,6 +1597,7 @@ textarea,
   .mobile-menu {
     top: 5.4rem;
     padding: 1.1rem;
+    padding-bottom: calc(1.1rem + env(safe-area-inset-bottom));
     gap: 1.1rem;
   }
 
@@ -1544,15 +1605,22 @@ textarea,
     gap: 0.95rem;
   }
 
+  .mobile-links a,
+  .mobile-cta {
+    min-height: 3.8rem;
+    padding: 1rem 1.05rem;
+  }
+
   .hero-layout {
     min-height: auto;
-    gap: 2.75rem;
-    padding-top: 2.25rem;
-    padding-bottom: 4rem;
+    gap: 2.4rem;
+    padding-top: 1.75rem;
+    padding-bottom: 3.6rem;
   }
 
   .hero-copy {
-    gap: 1.35rem;
+    width: 100%;
+    gap: 1.25rem;
     text-align: center;
     justify-items: center;
   }
@@ -1578,7 +1646,7 @@ textarea,
   }
 
   .section-lead {
-    line-height: 1.95;
+    line-height: 1.82;
   }
 
   .hero-actions,
@@ -1586,6 +1654,11 @@ textarea,
   .snapshot-row,
   .mini-stats {
     justify-content: center;
+  }
+
+  .hero-highlights {
+    width: 100%;
+    gap: 0.75rem;
   }
 
   .stats-section {
@@ -1619,6 +1692,10 @@ textarea,
   .contact-item,
   .availability-card {
     padding: 1.1rem 1rem;
+  }
+
+  .contact-item {
+    min-height: 4.15rem;
   }
 
   .hero-badge {
@@ -1657,9 +1734,23 @@ textarea,
   .footer-links {
     justify-content: flex-start;
   }
+
+  .social-link,
+  .scroll-top {
+    width: 3.1rem;
+    height: 3.1rem;
+  }
 }
 
 @media (max-width: 680px) {
+  html {
+    scroll-padding-top: 6.1rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 6.1rem;
+  }
+
   .shell {
     width: min(calc(100% - 2rem), var(--content-width));
   }
@@ -1692,8 +1783,23 @@ textarea,
     gap: 2rem;
   }
 
+  .hero-title {
+    font-size: clamp(2.7rem, 13vw, 3.7rem);
+    line-height: 0.94;
+  }
+
   .section-title {
     font-size: clamp(2.1rem, 9vw, 2.7rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.05rem, 5vw, 1.35rem);
+  }
+
+  .hero-text,
+  .section-lead {
+    font-size: 0.97rem;
+    line-height: 1.72;
   }
 
   .btn,
@@ -1705,6 +1811,10 @@ textarea,
   .hero-actions {
     width: 100%;
     gap: 0.85rem;
+  }
+
+  .form-submit {
+    width: 100%;
   }
 
   .hero-frame {
@@ -1720,8 +1830,17 @@ textarea,
     display: flex;
     align-items: center;
     width: 100%;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 0.9rem 1rem;
+  }
+
+  .contact-item {
+    align-items: flex-start;
+  }
+
+  .form-card {
+    padding: 1.15rem;
   }
 
   .social-tooltip {
@@ -1731,6 +1850,15 @@ textarea,
   .social-dock {
     right: 0.75rem;
     bottom: 0.75rem;
+  }
+
+  .scroll-top {
+    left: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  #site-footer {
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom));
   }
 }
 
