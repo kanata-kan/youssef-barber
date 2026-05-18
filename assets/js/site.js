@@ -723,7 +723,13 @@ function setupHeaderState() {
 function setupMobileMenu() {
   const toggle = document.querySelector(".menu-toggle");
   const menu = document.getElementById("mobile-menu");
+
+  if (!toggle || !menu) {
+    return;
+  }
+
   const allLinks = menu.querySelectorAll("a");
+  const isMenuOpen = () => document.body.classList.contains("menu-open");
 
   const closeMenu = () => {
     document.body.classList.remove("menu-open");
@@ -738,6 +744,24 @@ function setupMobileMenu() {
 
   allLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (!isMenuOpen()) {
+      return;
+    }
+
+    const target = event.target;
+
+    if (!(target instanceof Node)) {
+      return;
+    }
+
+    if (menu.contains(target) || toggle.contains(target)) {
+      return;
+    }
+
+    closeMenu();
   });
 
   window.addEventListener("keydown", (event) => {
