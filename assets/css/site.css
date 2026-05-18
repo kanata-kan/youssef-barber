@@ -277,6 +277,8 @@ blockquote {
   box-shadow: var(--shadow);
   display: grid;
   gap: 1rem;
+  max-height: calc(100svh - 7.25rem);
+  overflow-y: auto;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-1rem);
@@ -290,6 +292,9 @@ blockquote {
 
 .mobile-links a,
 .mobile-cta {
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
   padding: 0.9rem 1rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
@@ -1183,17 +1188,56 @@ textarea {
 
   .site-nav {
     width: calc(100% - (var(--gutter) * 2));
+    margin-top: 0.75rem;
+    padding-block: 0.85rem;
     padding-inline: 1rem;
+  }
+
+  .mobile-menu {
+    top: 5.4rem;
+    padding: 1.1rem;
+    gap: 1.1rem;
+  }
+
+  .mobile-links {
+    gap: 0.95rem;
   }
 
   .hero-layout {
     min-height: auto;
-    padding-top: 2rem;
+    gap: 2.75rem;
+    padding-top: 2.25rem;
+    padding-bottom: 4rem;
   }
 
   .hero-copy {
+    gap: 1.35rem;
     text-align: center;
     justify-items: center;
+  }
+
+  .hero-section {
+    padding-top: 7.4rem;
+  }
+
+  .content-section {
+    padding-block: 5rem;
+  }
+
+  .two-column-grid {
+    gap: 2.5rem;
+  }
+
+  .stack {
+    gap: 1.75rem;
+  }
+
+  .section-title {
+    line-height: 1.08;
+  }
+
+  .section-lead {
+    line-height: 1.95;
   }
 
   .hero-actions,
@@ -1201,6 +1245,39 @@ textarea {
   .snapshot-row,
   .mini-stats {
     justify-content: center;
+  }
+
+  .stats-section {
+    padding-bottom: 3rem;
+  }
+
+  .stats-grid,
+  .feature-grid,
+  .card-grid,
+  .profile-grid,
+  .timeline-list,
+  .contact-list,
+  .language-list,
+  .edu-list,
+  .interest-list {
+    gap: 1.25rem;
+  }
+
+  .feature-card,
+  .detail-card,
+  .profile-card,
+  .quote-panel,
+  .form-card,
+  .timeline-item,
+  .stat-card {
+    padding: 1.35rem;
+  }
+
+  .snapshot-card,
+  .mini-stat,
+  .contact-item,
+  .availability-card {
+    padding: 1.1rem 1rem;
   }
 
   .hero-badge {
@@ -1248,12 +1325,32 @@ textarea {
     width: calc(100% - 2rem);
   }
 
+  .mobile-menu {
+    left: 1rem;
+    right: 1rem;
+    top: 5.2rem;
+    padding: 1rem;
+  }
+
   .stats-grid,
   .card-grid,
   .feature-grid,
   .profile-grid,
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .content-section {
+    padding-block: 4.5rem;
+  }
+
+  .two-column-grid,
+  .stack {
+    gap: 2rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.1rem, 9vw, 2.7rem);
   }
 
   .btn,
@@ -1264,10 +1361,20 @@ textarea {
 
   .hero-actions {
     width: 100%;
+    gap: 0.85rem;
   }
 
   .hero-frame {
     width: min(100%, 21rem);
+  }
+
+  .hero-highlights li,
+  .interest-chip {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 
   .social-tooltip {
