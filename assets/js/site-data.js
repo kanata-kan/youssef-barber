@@ -34,16 +34,16 @@ export const siteContent = {
     badge: { value: "14", label: "Years" },
     sideLabel: "Since 2011",
     highlights: [
-      "Luxury grooming",
-      "Precision cutting",
-      "Client loyalty"
+      { icon: "crown", label: "Luxury grooming" },
+      { icon: "scissors", label: "Precision cutting" },
+      { icon: "users", label: "Client loyalty" }
     ]
   },
   stats: [
-    { value: 14, suffix: "+", label: "Years of experience" },
-    { value: 5, suffix: "", label: "Prestigious salons" },
-    { value: 3, suffix: "", label: "Languages spoken" },
-    { value: 2, suffix: "", label: "Professional certifications" }
+    { icon: "clock", value: 14, suffix: "+", label: "Years of experience" },
+    { icon: "store", value: 5, suffix: "", label: "Prestigious salons" },
+    { icon: "globe", value: 3, suffix: "", label: "Languages spoken" },
+    { icon: "award", value: 2, suffix: "", label: "Professional certifications" }
   ],
   about: {
     tag: "Who I Am",
@@ -52,24 +52,28 @@ export const siteContent = {
       "A recognised expert in contemporary hair trends and precision cutting techniques, I bring a balance of classical mastery and modern creativity to every client experience.",
     features: [
       {
+        icon: "scissors",
         mark: "CUT",
         title: "Precision Cuts",
         description:
           "Modern and classic cutting techniques delivered with structure, control, and consistency."
       },
       {
+        icon: "palette",
         mark: "COL",
         title: "Color and Highlights",
         description:
           "Advanced colouring, balayage, and tonal work shaped for premium salon results."
       },
       {
+        icon: "shield",
         mark: "SHV",
         title: "Traditional Shaving",
         description:
           "Refined grooming rituals built on spa standards and timeless barbering craft."
       },
       {
+        icon: "crown",
         mark: "LUX",
         title: "Luxury Service",
         description:
@@ -80,8 +84,8 @@ export const siteContent = {
       "Every haircut is a form of art. My scissors are my brush, and every client deserves a result that feels personal.",
     signature: "Youssef El Moussaaif, Master Barber",
     snapshots: [
-      { value: "L'Oreal", label: "Certified professional" },
-      { value: "Illy", label: "Beauty Marrakesh" }
+      { icon: "award", value: "L'Oreal", label: "Certified professional" },
+      { icon: "spark", value: "Illy", label: "Beauty Marrakesh" }
     ]
   },
   skills: {
@@ -99,36 +103,42 @@ export const siteContent = {
     ],
     cards: [
       {
+        icon: "scissors",
         mark: "CB",
         title: "Classic Barbering",
         description:
           "Traditional barbering foundations adapted to premium contemporary expectations."
       },
       {
+        icon: "crown",
         mark: "LG",
         title: "Luxury Grooming",
         description:
           "Bespoke service rituals designed for comfort, detail, and repeat loyalty."
       },
       {
+        icon: "palette",
         mark: "CC",
         title: "Creative Coloring",
         description:
           "Confident advanced colour work supported by formal training and salon experience."
       },
       {
+        icon: "spark",
         mark: "TF",
         title: "Trend Forecasting",
         description:
           "A sharp eye on international style movements and grooming demand."
       },
       {
+        icon: "users",
         mark: "CR",
         title: "Client Relations",
         description:
           "Long term trust built through listening, clarity, and reliable high level execution."
       },
       {
+        icon: "briefcase",
         mark: "TM",
         title: "Team Mentoring",
         description:
@@ -141,6 +151,7 @@ export const siteContent = {
     title: "Professional<br /><em>Journey</em>",
     items: [
       {
+        icon: "crown",
         role: "Senior Barber / Hairstylist",
         period: "07/2024 - Present",
         company: "Illy Beauty Marrakesh",
@@ -152,6 +163,7 @@ export const siteContent = {
         ]
       },
       {
+        icon: "store",
         role: "Barber / Hairstylist and Salon Manager",
         period: "03/2018 - 05/2024",
         company: "Brothers Barber Shop",
@@ -164,6 +176,7 @@ export const siteContent = {
         ]
       },
       {
+        icon: "palette",
         role: "Barber / Hairstylist",
         period: "09/2016 - 01/2018",
         company: "Salon de Coiffure Yassine",
@@ -174,6 +187,7 @@ export const siteContent = {
         ]
       },
       {
+        icon: "shield",
         role: "Barber / Hairstylist",
         period: "11/2012 - 12/2015",
         company: "Salon Spa Agnaou",
@@ -184,6 +198,7 @@ export const siteContent = {
         ]
       },
       {
+        icon: "spark",
         role: "Barber / Hairstylist",
         period: "08/2011 - 10/2012",
         company: "Salon Spa Jaouhara",
@@ -200,8 +215,8 @@ export const siteContent = {
     description:
       "Explore a visual gallery of cuts, finishes, and detailed grooming work. Every image reflects precision, taste, and consistency.",
     stats: [
-      { value: "14+", label: "Years of craft" },
-      { value: "100s", label: "Happy clients" }
+      { icon: "clock", value: "14+", label: "Years of craft" },
+      { icon: "users", value: "100s", label: "Happy clients" }
     ],
     ctaLabel: "See the Gallery",
     href: "https://www.instagram.com/youssef_em1?utm_source=qr&igsh=b2t0ZG1tcHRvbnpz"
@@ -235,6 +250,7 @@ export const siteContent = {
       "Continuous Training"
     ],
     availability: {
+      icon: "clock",
       kicker: "Availability",
       title: "Immediately available",
       note: "References available upon request."

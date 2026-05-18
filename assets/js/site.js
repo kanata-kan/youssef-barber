@@ -13,10 +13,113 @@ const socialIcons = {
   `
 };
 
+const contentIcons = {
+  scissors: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="6.25" cy="6.25" r="2.25" />
+      <circle cx="6.25" cy="17.75" r="2.25" />
+      <path d="M20 4 8.2 14.2" />
+      <path d="M20 20 8.2 9.8" />
+    </svg>
+  `,
+  crown: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="m3 18 1.7-8 4.3 3L12 6l3 7 4.3-3L21 18Z" />
+      <path d="M5 20h14" />
+    </svg>
+  `,
+  users: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M16.5 19a4.5 4.5 0 0 0-9 0" />
+      <circle cx="12" cy="8" r="3" />
+      <path d="M20 18a3.5 3.5 0 0 0-3-3.46" />
+      <path d="M17 4.8a3 3 0 0 1 0 6" />
+    </svg>
+  `,
+  clock: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="8" />
+      <path d="M12 7.7v4.8l3.2 1.9" />
+    </svg>
+  `,
+  store: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M4 9.5 5.4 4h13.2L20 9.5" />
+      <path d="M5 10.5V20h14v-9.5" />
+      <path d="M9.5 20v-5h5V20" />
+    </svg>
+  `,
+  globe: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="8" />
+      <path d="M4.5 12h15" />
+      <path d="M12 4a12 12 0 0 1 0 16" />
+      <path d="M12 4a12 12 0 0 0 0 16" />
+    </svg>
+  `,
+  award: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="8.5" r="4.5" />
+      <path d="m9.6 12.3-1.3 7 3.7-2.1 3.7 2.1-1.3-7" />
+    </svg>
+  `,
+  palette: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 4.2c-4.8 0-8.8 3.5-8.8 8 0 4 2.9 6.6 6.2 6.6h1.8a1.8 1.8 0 0 0 0-3.6h-.8a1.8 1.8 0 0 1 0-3.6h1.7c4.8 0 8.7-2.3 8.7-5.8 0-4-4.1-7.6-8.8-7.6Z" />
+      <circle cx="7.8" cy="10" r="1" />
+      <circle cx="10.5" cy="8.2" r="1" />
+      <circle cx="13.6" cy="8.1" r="1" />
+    </svg>
+  `,
+  shield: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 3.8 6 6.1v4.8c0 4.1 2.3 7.7 6 9.3 3.7-1.6 6-5.2 6-9.3V6.1Z" />
+      <path d="m9.4 12 1.7 1.8 3.5-3.7" />
+    </svg>
+  `,
+  spark: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z" />
+      <path d="m18.2 4.8.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6Z" />
+    </svg>
+  `,
+  briefcase: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="4" y="7" width="16" height="11" rx="2" />
+      <path d="M9 7V5.8C9 4.8 9.8 4 10.8 4h2.4C14.2 4 15 4.8 15 5.8V7" />
+      <path d="M4 11.5h16" />
+    </svg>
+  `,
+  mail: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+      <path d="m5.2 7 6.8 5.3L18.8 7" />
+    </svg>
+  `,
+  phone: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M7 4.8h3l1.1 3.9-1.8 1.8a14.4 14.4 0 0 0 4.2 4.2l1.8-1.8 3.9 1.1v3c0 .9-.7 1.7-1.7 1.7A13.5 13.5 0 0 1 5.3 6.5C5.3 5.5 6 4.8 7 4.8Z" />
+    </svg>
+  `,
+  pin: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 20s6-5.6 6-10a6 6 0 1 0-12 0c0 4.4 6 10 6 10Z" />
+      <circle cx="12" cy="10" r="2.2" />
+    </svg>
+  `,
+  book: `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M6 5.2h9.3a2.7 2.7 0 0 1 2.7 2.7V19H8.5A2.5 2.5 0 0 0 6 21Z" />
+      <path d="M6 5.2v15.6" />
+      <path d="M8.8 8.3h6.2" />
+    </svg>
+  `
+};
+
 const contactBadges = {
-  email: "@",
-  phone: "TEL",
-  location: "LOC"
+  email: "mail",
+  phone: "phone",
+  location: "pin"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -128,7 +231,10 @@ function renderHero() {
             </div>
             <ul class="hero-highlights reveal">
               ${hero.highlights
-                .map((item) => `<li>${item}</li>`)
+                .map((item) => {
+                  const highlight = typeof item === "string" ? { label: item, icon: "spark" } : item;
+                  return `<li>${renderContentIcon(highlight.icon)}<span>${highlight.label}</span></li>`;
+                })
                 .join("")}
             </ul>
           </div>
@@ -161,6 +267,7 @@ function renderStats() {
             .map(
               (item) => `
                 <article class="stat-card reveal">
+                  <span class="stat-icon">${renderContentIcon(item.icon)}</span>
                   <div class="stat-value" data-target="${item.value}" data-suffix="${item.suffix}">0</div>
                   <p class="stat-label">${item.label}</p>
                 </article>
@@ -188,7 +295,7 @@ function renderAbout() {
                 .map(
                   (feature) => `
                     <article class="feature-card reveal">
-                      <div class="feature-mark">${feature.mark}</div>
+                      <div class="feature-mark">${renderContentIcon(feature.icon)}<span>${feature.mark}</span></div>
                       <h3>${feature.title}</h3>
                       <p>${feature.description}</p>
                     </article>
@@ -205,8 +312,11 @@ function renderAbout() {
                 .map(
                   (snapshot) => `
                     <div class="snapshot-card">
+                      <div class="snapshot-top">
+                        <span class="snapshot-icon">${renderContentIcon(snapshot.icon)}</span>
+                        <span>${snapshot.label}</span>
+                      </div>
                       <strong>${snapshot.value}</strong>
-                      <span>${snapshot.label}</span>
                     </div>
                   `
                 )
@@ -252,7 +362,7 @@ function renderSkills() {
               .map(
                 (card) => `
                   <article class="detail-card">
-                    <div class="detail-mark">${card.mark}</div>
+                    <div class="detail-mark">${renderContentIcon(card.icon)}<span>${card.mark}</span></div>
                     <h3>${card.title}</h3>
                     <p>${card.description}</p>
                   </article>
@@ -283,9 +393,12 @@ function renderExperience() {
                 <article class="timeline-item reveal">
                   <div class="timeline-dot" aria-hidden="true"></div>
                   <div class="timeline-top">
-                    <div>
-                      <h3>${item.role}</h3>
-                      <p class="timeline-company">${item.company} | ${item.location}</p>
+                    <div class="timeline-role">
+                      <span class="timeline-icon">${renderContentIcon(item.icon)}</span>
+                      <div>
+                        <h3>${item.role}</h3>
+                        <p class="timeline-company">${item.company} | ${item.location}</p>
+                      </div>
                     </div>
                     <p class="timeline-period">${item.period}</p>
                   </div>
@@ -317,8 +430,11 @@ function renderInstagram() {
                 .map(
                   (item) => `
                     <div class="mini-stat">
+                      <div class="mini-stat-top">
+                        <span class="mini-stat-icon">${renderContentIcon(item.icon)}</span>
+                        <span>${item.label}</span>
+                      </div>
                       <strong>${item.value}</strong>
-                      <span>${item.label}</span>
                     </div>
                   `
                 )
@@ -347,7 +463,10 @@ function renderCredentials() {
         </div>
         <div class="profile-grid">
           <article class="profile-card reveal">
-            <h3>Education</h3>
+            <div class="profile-heading">
+              <span class="profile-icon">${renderContentIcon("book")}</span>
+              <h3>Education</h3>
+            </div>
             <div class="edu-list">
               ${credentials.education
                 .map(
@@ -363,7 +482,10 @@ function renderCredentials() {
             </div>
           </article>
           <article class="profile-card reveal">
-            <h3>Languages</h3>
+            <div class="profile-heading">
+              <span class="profile-icon">${renderContentIcon("globe")}</span>
+              <h3>Languages</h3>
+            </div>
             <div class="language-list">
               ${credentials.languages
                 .map(
@@ -386,14 +508,20 @@ function renderCredentials() {
             </div>
           </article>
           <article class="profile-card reveal">
-            <h3>Interests</h3>
+            <div class="profile-heading">
+              <span class="profile-icon">${renderContentIcon("spark")}</span>
+              <h3>Interests</h3>
+            </div>
             <div class="interest-list">
               ${credentials.interests
                 .map((item) => `<span class="interest-chip">${item}</span>`)
                 .join("")}
             </div>
             <div class="availability-card">
-              <p class="availability-kicker">${credentials.availability.kicker}</p>
+              <div class="availability-heading">
+                <span class="availability-icon">${renderContentIcon(credentials.availability.icon)}</span>
+                <p class="availability-kicker">${credentials.availability.kicker}</p>
+              </div>
               <strong>${credentials.availability.title}</strong>
               <span>${credentials.availability.note}</span>
             </div>
@@ -421,7 +549,7 @@ function renderContact() {
                     <a class="contact-item" href="${item.href}" ${
                       item.kind === "location" ? 'target="_blank" rel="noopener"' : ""
                     }>
-                      <span class="contact-badge">${contactBadges[item.kind] ?? item.kind}</span>
+                      <span class="contact-badge">${renderContentIcon(contactBadges[item.kind] ?? "spark")}</span>
                       <span class="contact-copy">
                         <strong>${item.label}</strong>
                         <span>${item.value}</span>
@@ -554,6 +682,10 @@ function getSocialHref(item) {
   const currentUrl = window.location.href;
   const text = `${item.message} Link: ${currentUrl}`;
   return `https://wa.me/${item.phone}?text=${encodeURIComponent(text)}`;
+}
+
+function renderContentIcon(iconName) {
+  return contentIcons[iconName] ?? contentIcons.spark;
 }
 
 function updateMetaTag(selector, value) {

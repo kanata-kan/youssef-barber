@@ -599,6 +599,22 @@ body.menu-open .mobile-menu {
   font-size: 0.78rem;
 }
 
+.hero-highlights li {
+  gap: 0.6rem;
+}
+
+.hero-highlights svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--gold);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+
 .hero-media {
   display: grid;
   place-items: center;
@@ -799,6 +815,45 @@ body.menu-open .mobile-menu {
   text-align: center;
 }
 
+.stat-icon,
+.snapshot-icon,
+.mini-stat-icon,
+.timeline-icon,
+.profile-icon,
+.availability-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  flex: 0 0 auto;
+}
+
+.stat-icon {
+  width: 3.15rem;
+  height: 3.15rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(201, 169, 110, 0.18);
+  background: rgba(201, 169, 110, 0.08);
+}
+
+.stat-icon svg,
+.feature-mark svg,
+.detail-mark svg,
+.contact-badge svg,
+.snapshot-icon svg,
+.mini-stat-icon svg,
+.timeline-icon svg,
+.profile-icon svg,
+.availability-icon svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .stat-card:hover,
 .feature-card:hover,
 .detail-card:hover,
@@ -891,6 +946,7 @@ body.menu-open .mobile-menu {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   min-width: 3rem;
   min-height: 3rem;
   padding-inline: 0.7rem;
@@ -905,12 +961,27 @@ body.menu-open .mobile-menu {
 }
 
 .feature-card h3,
-.detail-card h3,
-.timeline-item h3,
-.profile-card h3 {
+.detail-card h3 {
   margin-top: 1rem;
   font-size: 1rem;
   letter-spacing: 0.02em;
+}
+
+.timeline-item h3,
+.profile-card h3 {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.feature-mark span,
+.detail-mark span {
+  display: inline-block;
+  transform: translateY(0.02rem);
+}
+
+.contact-badge {
+  min-width: 3.15rem;
+  padding-inline: 0;
 }
 
 .feature-card p,
@@ -961,6 +1032,32 @@ body.menu-open .mobile-menu {
   background: rgba(255, 255, 255, 0.02);
 }
 
+.snapshot-top,
+.mini-stat-top,
+.profile-heading,
+.availability-heading,
+.timeline-role {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.snapshot-top,
+.mini-stat-top {
+  margin-bottom: 0.75rem;
+}
+
+.snapshot-icon,
+.mini-stat-icon,
+.profile-icon,
+.availability-icon,
+.timeline-icon {
+  width: 2.65rem;
+  height: 2.65rem;
+  border: 1px solid rgba(201, 169, 110, 0.18);
+  background: rgba(201, 169, 110, 0.08);
+}
+
 .snapshot-card strong,
 .mini-stat strong {
   display: block;
@@ -968,12 +1065,16 @@ body.menu-open .mobile-menu {
   font-size: 1.4rem;
 }
 
-.snapshot-card span,
-.mini-stat span {
+.snapshot-top span:last-child,
+.mini-stat-top span:last-child {
   color: var(--muted-soft);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.mini-stat strong {
+  font-size: 1.55rem;
 }
 
 .skills-list {
@@ -1076,10 +1177,19 @@ body.menu-open .mobile-menu {
   align-items: start;
 }
 
+.timeline-role {
+  align-items: flex-start;
+}
+
 .timeline-company,
 .timeline-period {
   color: var(--muted-soft);
   font-size: 0.84rem;
+}
+
+.timeline-item h3,
+.profile-heading h3 {
+  margin-top: 0;
 }
 
 .timeline-period {
@@ -1190,6 +1300,18 @@ body.menu-open .mobile-menu {
   margin-top: 1.5rem;
   padding: 1.15rem;
   border-radius: 22px;
+}
+
+.profile-heading {
+  margin-bottom: 1.15rem;
+}
+
+.availability-heading {
+  margin-bottom: 0.25rem;
+}
+
+.availability-heading .availability-kicker {
+  margin: 0;
 }
 
 .availability-card strong {
