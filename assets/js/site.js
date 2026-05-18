@@ -91,7 +91,6 @@ function renderHero() {
   root.innerHTML = `
     <section class="hero-section" id="hero">
       <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-line" aria-hidden="true"></div>
       <div class="shell">
         <div class="hero-layout">
           <div class="hero-copy">
