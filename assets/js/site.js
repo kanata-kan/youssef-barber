@@ -913,54 +913,6 @@ function setupContactForm() {
   });
 }
 
-function setupCursor() {
-  if (!window.matchMedia("(pointer: fine)").matches) {
-    document.documentElement.classList.add("touch-input");
-    return;
-  }
-
-  const cursor = document.getElementById("cursor");
-  const ring = document.getElementById("cursor-ring");
-
-  if (!cursor || !ring) {
-    return;
-  }
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let ringX = 0;
-  let ringY = 0;
-
-  document.addEventListener("mousemove", (event) => {
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-    cursor.style.left = `${mouseX}px`;
-    cursor.style.top = `${mouseY}px`;
-  });
-
-  const animateRing = () => {
-    ringX += (mouseX - ringX) * 0.16;
-    ringY += (mouseY - ringY) * 0.16;
-    ring.style.left = `${ringX}px`;
-    ring.style.top = `${ringY}px`;
-    window.requestAnimationFrame(animateRing);
-  };
-
-  animateRing();
-
-  document.querySelectorAll("a, button, input, textarea, .feature-card, .detail-card, .interest-chip").forEach((element) => {
-    element.addEventListener("mouseenter", () => {
-      cursor.classList.add("cursor-active");
-      ring.classList.add("cursor-active");
-    });
-
-    element.addEventListener("mouseleave", () => {
-      cursor.classList.remove("cursor-active");
-      ring.classList.remove("cursor-active");
-    });
-  });
-}
-
 function injectCurrentYear() {
   document.querySelectorAll("[data-year]").forEach((item) => {
     item.textContent = new Date().getFullYear();
