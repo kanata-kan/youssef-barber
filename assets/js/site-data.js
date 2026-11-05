@@ -6,7 +6,7 @@ export const siteContent = {
     siteUrl: "https://youssef-barber.vercel.app/",
     previewImage: "/assets/images/social-preview.jpg?v=20260518",
     previewImageAlt: "Youssef El Moussaaif master barber social preview",
-    themeColor: "#060e1a"
+    themeColor: "#f3eee5"
   },
   brand: {
     shortName: "Y. El Moussaaif",
