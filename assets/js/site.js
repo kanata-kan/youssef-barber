@@ -782,10 +782,13 @@ function setupMobileMenu() {
 function setupRevealAnimations() {
   const items = document.querySelectorAll(".reveal, .timeline-item, .stat-card");
 
-  if (!("IntersectionObserver" in window)) {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || !("IntersectionObserver" in window)) {
     items.forEach((item) => item.classList.add("visible"));
     return;
   }
+
+  document.documentElement.classList.add("motion-ready");
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -838,49 +841,41 @@ function setupSkillAnimations() {
 
 function setupCounters() {
   const counters = document.querySelectorAll(".stat-value");
+  if (!counters.length) return;
 
-  if (!counters.length) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const showValue = (element) => {
+    element.textContent = `${element.dataset.target}${element.dataset.suffix ?? ""}`;
+  };
+
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    counters.forEach(showValue);
     return;
   }
 
   const animate = (element) => {
     const target = Number(element.dataset.target);
     const suffix = element.dataset.suffix ?? "";
-    let current = 0;
-    const increment = Math.max(1, Math.floor(target / 24));
-
-    const timer = window.setInterval(() => {
-      current = Math.min(current + increment, target);
-      element.textContent = `${current}${suffix}`;
-
-      if (current >= target) {
-        window.clearInterval(timer);
-      }
-    }, 50);
+    const startTime = performance.now();
+    const duration = 700;
+    const frame = (time) => {
+      const progress = Math.min(1, (time - startTime) / duration);
+      const eased = 1 - (1 - progress) ** 3;
+      element.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (progress < 1) window.requestAnimationFrame(frame);
+    };
+    window.requestAnimationFrame(frame);
   };
 
-  if (!("IntersectionObserver" in window)) {
-    counters.forEach(animate);
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        animate(entry.target);
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.55 }
-  );
-
-  counters.forEach((counter) => observer.observe(counter));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      animate(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.35 });
+  counters.forEach((element) => observer.observe(element));
 }
-
 function setupContactForm() {
   const form = document.getElementById("contact-form");
   const feedback = document.getElementById("form-feedback");
