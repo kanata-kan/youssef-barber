@@ -132,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSkillAnimations();
   setupCounters();
   setupContactForm();
-  setupCursor();
   injectCurrentYear();
 });
 
@@ -189,18 +188,29 @@ function renderHeader() {
           <ul class="nav-links">${links}</ul>
         </div>
         <div class="nav-actions">
-          <a class="nav-cta" href="#contact">Hire Me</a>
-          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <a class="nav-cta" href="#contact">Contact</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
             <span></span>
             <span></span>
             <span></span>
-            <span class="sr-only">Toggle menu</span>
+            <span class="sr-only">Menu</span>
           </button>
         </div>
       </nav>
-      <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-backdrop" aria-hidden="true"></div>
+      <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-heading" aria-hidden="true" inert>
+        <div class="mobile-menu-intro">
+          <span class="mobile-menu-kicker">Youssef · Portfolio</span>
+          <p id="mobile-menu-heading">${siteContent.brand.role}</p>
+          <span>${siteContent.brand.location}</span>
+        </div>
         <ul class="mobile-links">${links}</ul>
-        <a class="mobile-cta" href="#contact">Hire Me</a>
+        <div class="mobile-menu-footer">
+          <a class="mobile-cta" href="#contact">Discuss an opportunity <span aria-hidden="true">↗</span></a>
+          <div class="mobile-menu-social">
+            ${siteContent.social.map((item) => `<a href="${getSocialHref(item)}" target="_blank" rel="noopener noreferrer">${item.label} <span aria-hidden="true">↗</span></a>`).join("")}
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -229,6 +239,7 @@ function renderHero() {
                 <span></span>${hero.secondaryCta.label}
               </a>
             </div>
+            <a class="hero-work-link reveal" href="#work">Explore the work <span aria-hidden="true">↗</span></a>
             <ul class="hero-highlights reveal">
               ${hero.highlights
                 .map((item) => {
@@ -241,7 +252,7 @@ function renderHero() {
           <div class="hero-media reveal">
             <div class="hero-frame">
               <div class="hero-photo">
-                <img src="${hero.portrait}" alt="${siteContent.brand.fullName}" />
+                <img src="${hero.portrait}" alt="${siteContent.brand.fullName}, master barber in Marrakech" decoding="async" fetchpriority="high" />
               </div>
               <div class="hero-badge">
                 <strong>${hero.badge.value}</strong>
@@ -420,7 +431,7 @@ function renderInstagram() {
   const root = document.getElementById("instagram-root");
 
   root.innerHTML = `
-    <section class="content-section accent-section">
+    <section class="content-section accent-section" id="work">
       <div class="shell">
         <div class="accent-layout">
           <div class="stack reveal">
@@ -723,54 +734,51 @@ function setupHeaderState() {
 function setupMobileMenu() {
   const toggle = document.querySelector(".menu-toggle");
   const menu = document.getElementById("mobile-menu");
+  const backdrop = document.querySelector(".mobile-menu-backdrop");
+  if (!toggle || !menu || !backdrop) return;
 
-  if (!toggle || !menu) {
-    return;
-  }
+  const mobileQuery = window.matchMedia("(max-width: 900px)");
+  const links = menu.querySelectorAll("a");
+  const isOpen = () => document.body.classList.contains("menu-open");
 
-  const allLinks = menu.querySelectorAll("a");
-  const isMenuOpen = () => document.body.classList.contains("menu-open");
-
-  const closeMenu = () => {
-    document.body.classList.remove("menu-open");
-    toggle.setAttribute("aria-expanded", "false");
+  const setOpen = (open, restoreFocus = true) => {
+    const next = Boolean(open && mobileQuery.matches);
+    const wasOpen = isOpen();
+    document.body.classList.toggle("menu-open", next);
+    toggle.setAttribute("aria-expanded", String(next));
+    toggle.setAttribute("aria-label", next ? "Close navigation" : "Open navigation");
+    menu.setAttribute("aria-hidden", String(!next));
+    menu.inert = !next;
+    if (next && !wasOpen) {
+      window.requestAnimationFrame(() => menu.querySelector("a")?.focus({ preventScroll: true }));
+    } else if (!next && wasOpen && restoreFocus && mobileQuery.matches) {
+      toggle.focus({ preventScroll: true });
+    }
   };
 
-  toggle.addEventListener("click", () => {
-    const nextState = toggle.getAttribute("aria-expanded") !== "true";
-    document.body.classList.toggle("menu-open", nextState);
-    toggle.setAttribute("aria-expanded", String(nextState));
-  });
-
-  allLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
+  setOpen(false, false);
+  toggle.addEventListener("click", () => setOpen(!isOpen()));
+  backdrop.addEventListener("click", () => setOpen(false));
+  links.forEach((link) => link.addEventListener("click", () => setOpen(false, false)));
   document.addEventListener("pointerdown", (event) => {
-    if (!isMenuOpen()) {
-      return;
-    }
-
-    const target = event.target;
-
-    if (!(target instanceof Node)) {
-      return;
-    }
-
-    if (menu.contains(target) || toggle.contains(target)) {
-      return;
-    }
-
-    closeMenu();
+    if (!isOpen() || menu.contains(event.target) || toggle.contains(event.target)) return;
+    setOpen(false, false);
   });
-
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeMenu();
-    }
+    if (!isOpen()) return;
+    if (event.key === "Escape") { event.preventDefault(); setOpen(false); return; }
+    if (event.key !== "Tab") return;
+    const focusable = [...menu.querySelectorAll("a, button, [tabindex]")]
+      .filter((element) => !element.hasAttribute("disabled") && element.tabIndex >= 0);
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
+  window.addEventListener("resize", () => {
+    if (!mobileQuery.matches && isOpen()) setOpen(false, false);
+  }, { passive: true });
 }
-
 function setupRevealAnimations() {
   const items = document.querySelectorAll(".reveal, .timeline-item, .stat-card");
 
@@ -790,7 +798,7 @@ function setupRevealAnimations() {
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.18 }
+    { threshold: 0.12 }
   );
 
   items.forEach((item) => observer.observe(item));
