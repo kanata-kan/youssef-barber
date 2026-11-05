@@ -2,7 +2,7 @@ export const siteContent = {
   meta: {
     title: "Youssef El Moussaaif | Master Barber",
     description:
-      "Luxury barber portfolio for Youssef El Moussaaif, master barber and hairstylist in Marrakech.",
+      "Youssef El Moussaaif — master barber and hairstylist in Marrakech. Discover his experience, craftsmanship, training and portfolio.",
     siteUrl: "https://youssef-barber.vercel.app/",
     previewImage: "/assets/images/social-preview.jpg?v=20260518",
     previewImageAlt: "Youssef El Moussaaif master barber social preview",
@@ -15,21 +15,21 @@ export const siteContent = {
     location: "Marrakech, Morocco"
   },
   navigation: [
-    { label: "About", href: "#about" },
-    { label: "Expertise", href: "#skills" },
     { label: "Experience", href: "#experience" },
-    { label: "Profile", href: "#credentials" },
+    { label: "Expertise", href: "#skills" },
+    { label: "Work", href: "#work" },
+    { label: "Credentials", href: "#credentials" },
     { label: "Contact", href: "#contact" }
   ],
   hero: {
-    eyebrow: "Master Barber | Marrakech",
+    eyebrow: "Master Barber · Marrakech",
     titleLead: "Youssef",
     titleAccent: "El Moussaaif",
-    subtitle: "The Art of Precision Grooming",
+    subtitle: "Precision craft. Professional presence.",
     description:
-      "Professional barber and hairstylist with more than 14 years of experience across Marrakech's most respected salons, blending classic discipline with modern taste.",
-    primaryCta: { label: "My Journey", href: "#experience" },
-    secondaryCta: { label: "Book a Session", href: "#contact" },
+      "Master barber and hairstylist with 14+ years of hands-on experience in Marrakech salons, bringing sharp technique, thoughtful service and consistent results to every chair.",
+    primaryCta: { label: "Contact Youssef", href: "#contact" },
+    secondaryCta: { label: "View Experience", href: "#experience" },
     portrait: "./assets/images/youssef-portrait.jpg",
     badge: { value: "14", label: "Years" },
     sideLabel: "Since 2011",
@@ -41,7 +41,7 @@ export const siteContent = {
   },
   stats: [
     { icon: "clock", value: 14, suffix: "+", label: "Years of experience" },
-    { icon: "store", value: 5, suffix: "", label: "Prestigious salons" },
+    { icon: "store", value: 5, suffix: "", label: "Salon workplaces" },
     { icon: "globe", value: 3, suffix: "", label: "Languages spoken" },
     { icon: "award", value: 2, suffix: "", label: "Professional certifications" }
   ],
@@ -210,10 +210,10 @@ export const siteContent = {
     ]
   },
   instagram: {
-    tag: "Visual Portfolio",
-    title: "Discover my <em>Work</em><br />on Instagram",
+    tag: "Selected work",
+    title: "The Craft<br /><em>in Practice</em>",
     description:
-      "Explore a visual gallery of cuts, finishes, and detailed grooming work. Every image reflects precision, taste, and consistency.",
+      "See real examples of cuts, finishes and grooming work on Instagram — the best way to judge the craft is to see it.",
     stats: [
       { icon: "clock", value: "14+", label: "Years of craft" },
       { icon: "users", value: "100s", label: "Happy clients" }
@@ -257,10 +257,10 @@ export const siteContent = {
     }
   },
   contact: {
-    tag: "Get in Touch",
-    title: "Let's Create<br /><em>Together</em>",
+    tag: "Professional enquiries",
+    title: "Let's Work<br /><em>Together</em>",
     lead:
-      "Ready to bring a new level of excellence to your team. Available for partnerships, collaborations, and new opportunities in Marrakech and beyond.",
+      "For salon roles, hotel grooming teams and professional collaborations, get in touch directly. Based in Marrakech and open to new opportunities.",
     items: [
       {
         kind: "email",
@@ -304,7 +304,7 @@ export const siteContent = {
       label: "WhatsApp",
       phone: "212670875675",
       message:
-        "Salam Youssef, jit mn site dyalek w bghit nstafser 3la khadamatek."
+        "Hello Youssef, I saw your professional portfolio and would like to discuss an opportunity."
     },
     {
       kind: "instagram",
