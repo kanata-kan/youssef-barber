@@ -25,7 +25,7 @@ export const siteContent = {
     eyebrow: "Master Barber · Marrakech",
     titleLead: "Youssef",
     titleAccent: "El Moussaaif",
-    subtitle: "Precision craft. Professional presence.",
+    subtitle: "Barbering · Hairstyling · Guest Service",
     description:
       "Master barber and hairstylist with 14+ years of hands-on experience in Marrakech salons, bringing sharp technique, thoughtful service and consistent results to every chair.",
     primaryCta: { label: "Contact Youssef", href: "#contact" },
