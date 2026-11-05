@@ -185,7 +185,7 @@ body:not(.menu-open) .mobile-menu { pointer-events: none; }
     position: fixed;
     z-index: 40;
     inset: 72px 0 0 auto;
-    width: min(390px, 100%);
+    width: min(380px, 92%);
     height: calc(100svh - 72px);
     max-height: none;
     margin: 0;
@@ -377,7 +377,7 @@ body:not(.menu-open) .mobile-menu { pointer-events: none; }
     left: auto;
     right: 0;
     height: calc(100svh - 68px);
-    width: min(390px,100%);
+    width: min(380px,92%);
     padding: 1.15rem 1.3rem max(1rem,env(safe-area-inset-bottom));
   }
   .nav-logo { font-size: clamp(1.2rem, 5.7vw, 1.48rem); }
